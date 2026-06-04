@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pour Ismaïl ❤️</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    font-family:Arial, sans-serif;
+
+    background-image:url('WhatsApp Image 2026-06-04 at 1.44.01 PM.jpeg');
+    background-size:cover;
+    background-position:center;
+}
+
+.overlay{
+    background:rgba(185, 49, 49, 0.4);
+    width:100%;
+    height:100%;
+    position:absolute;
+}
+
+/* Zone d’animation des coeurs qui tombent */
+#hearts{
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.container{
+    position:relative;
+    z-index:10;
+    color:white;
+    padding: 18px;
+}
+
+button{
+    padding:15px 30px;
+    font-size:22px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+#message{
+    display:none;
+    margin-top:20px;
+}
+
+.heart-big{
+    font-size:80px;
+    animation:beat 1s infinite;
+    margin: 10px 0;
+}
+
+@keyframes beat{
+    50%{ transform:scale(1.2); }
+}
+
+@keyframes fall {
+    0%   { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+    10%  { opacity: 1; }
+    100% { transform: translateY(110vh) rotate(240deg); opacity: 0; }
+}
+
+/* Petit ajustement pour éviter que le texte soit trop collé */
+p{
+  line-height: 1.6;
+}
+
+/* Ajout d’une couleur au bouton (optionnel) */
+button{
+  background: #a5a1a2;
+  color: white;
+  font-weight: bold;
+}
+button:hover{
+  filter: brightness(1.05);
+}
+</style>
+</head>
+
+<body>
+<div class="overlay"></div>
+
+<!-- Ici on met les coeurs qui tombent -->
+<div id="hearts"></div>
+
+<div class="container">
+
+    <button onclick="showMessage()">
+        Clique ici Ismaïl 
+    </button>
+
+    <div id="message">
+        <h1>Pour Ismaïl ❤️</h1>
+
+        <div class="heart-big">❤️</div>
+
+    <p>
+        J'avais envie de te dire quelque chose sans attendre quoi que ce soit en retour.<br><br>
+
+        J'ai eu des sentiments pour toi pendant très longtemps disons depuis que j'avais 13 ans.
+        Je ne te dis pas cela pour commencer une relation ni pour te mettre mal à l'aise.
+        J'avais simplement envie d'être sincère avec toi et de te partager ce que j'avais sur le cœur, mais actuellent je voulais juste qu'on soit des amis ni plus ni moins mais bon.<br><br>
+
+        Je t'aime en Allah et je te souhaite sincèrement tout le bien possible dans cette vie et dans l'au-delà. 🤍<br><br>
+
+        Après ce message, je te supprimerai.
+        Je n'attends aucune réponse, et sache que j'avais bcp hesiter avant de t'envoyer ceci.<br><br>
+
+        Prends soin de toi, Ismaïl. ❤️
+    </p>
+</div> ❤️
+        </p>
+    </div>
+
+</div>
+
+<script>
+function showMessage(){
+    document.getElementById("message").style.display="block";
+}
+
+// --- Coeurs qui tombent ---
+const heartsLayer = document.getElementById('hearts');
+const CHARS = ['❤️','💗','💖','💘','💓'];
+
+function spawnHeart() {
+    const heart = document.createElement('div');
+    const size = Math.random() * 20 + 16; // taille 16-36 px
+    const left = Math.random() * 100;     // position horizontale
+    const duration = Math.random() * 4 + 4; // durée 4-8s
+    const delay = Math.random() * 1.5;      // petit décalage
+    const char = CHARS[Math.floor(Math.random() * CHARS.length)];
+
+    heart.textContent = char;
+    heart.style.position = 'absolute';
+    heart.style.left = left + '%';
+    heart.style.top = '-10vh';
+    heart.style.fontSize = size + 'px';
+    heart.style.opacity = '0';
+    heart.style.zIndex = '6';
+
+    // animation
+    heart.style.animation = `fall ${duration}s ease-in forwards`;
+    heart.style.animationDelay = delay + 's';
+
+    heartsLayer.appendChild(heart);
+
+    // Nettoyage après animation
+    setTimeout(() => {
+        heart.remove();
+    }, (duration + delay) * 1000);
+}
+
+// Lancer la pluie de coeurs
+let interval = setInterval(() => {
+    // plus tu réduis l’interval, plus ça tombe
+    // ici ~ toutes les 250ms
+    spawnHeart();
+}, 250);
+
+// Option: si tu veux commencer seulement après clic, remplace le setInterval par ceci:
+// let interval = null;
+// function showMessage(){
+//   document.getElementById("message").style.display="block";
+//   if(!interval){
+//     interval = setInterval(spawnHeart, 250);
+//   }
+// }
+</script>
+
+</body>
+</html>
